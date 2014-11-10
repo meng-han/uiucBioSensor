@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/installing_updates-512.png</file>
+        <file>icons/export-64.png</file>
+        <file>icons/start.png</file>
+        <file>icons/stop.png</file>
+    </qresource>
+</RCC>
