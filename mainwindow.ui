@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1074</width>
-    <height>743</height>
+    <width>1270</width>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>500</width>
+         <width>600</width>
          <height>16777215</height>
         </size>
        </property>
@@ -123,6 +123,13 @@ font-weight: bold;
               <layout class="QVBoxLayout" name="verticalLayout_6">
                <item>
                 <widget class="QLabel" name="label_8">
+                 <property name="font">
+                  <font>
+                   <weight>75</weight>
+                   <italic>false</italic>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLabel {
 color: white;
@@ -131,6 +138,9 @@ color: white;
                  </property>
                  <property name="text">
                   <string>Electrode 1</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -154,26 +164,26 @@ border: none;
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_2">
                   <item>
-                   <widget class="QRadioButton" name="radioButton">
+                   <widget class="QRadioButton" name="e1SPRadioButton">
                     <property name="text">
-                     <string>Normal</string>
+                     <string>Set Potential</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButton_2">
+                   <widget class="QRadioButton" name="e1LSVRadioButton">
                     <property name="text">
                      <string>LSV</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButton_3">
+                   <widget class="QRadioButton" name="e1OCVRadioButton">
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
                     <property name="text">
-                     <string>Open circuit</string>
+                     <string>OCV</string>
                     </property>
                    </widget>
                   </item>
@@ -193,11 +203,21 @@ border: none;
               <layout class="QVBoxLayout" name="verticalLayout_7">
                <item>
                 <widget class="QLabel" name="label_9">
+                 <property name="font">
+                  <font>
+                   <weight>75</weight>
+                   <italic>false</italic>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLabel {color: white;}\n</string>
                  </property>
                  <property name="text">
                   <string>Electrode 2</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                </item>
@@ -219,23 +239,23 @@ border: none;
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_3">
                   <item>
-                   <widget class="QRadioButton" name="radioButton_4">
+                   <widget class="QRadioButton" name="e2SPRadioButton">
                     <property name="text">
-                     <string>Normal</string>
+                     <string>Set Potential</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButton_5">
+                   <widget class="QRadioButton" name="e2LSVRadioButton">
                     <property name="text">
                      <string>LSV</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButton_6">
+                   <widget class="QRadioButton" name="e2OCVRadioButton">
                     <property name="text">
-                     <string>Open circuit</string>
+                     <string>OCV</string>
                     </property>
                    </widget>
                   </item>
@@ -260,6 +280,12 @@ border: none;
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
            <widget class="QFrame" name="frame_4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="styleSheet">
              <string notr="true">#frame_4 {
 border-radius: 10px;
@@ -337,40 +363,47 @@ border: none;
                 <item>
                  <layout class="QGridLayout" name="gridLayout">
                   <item row="0" column="0">
-                   <widget class="QLabel" name="label_4">
+                   <widget class="QLabel" name="e1Label1">
                     <property name="text">
-                     <string>Apply E = </string>
+                     <string>Anode Potential = </string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QLineEdit" name="lineEdit">
+                   <widget class="QLineEdit" name="e1LineEdit1">
                     <property name="styleSheet">
                      <string notr="true"/>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="2">
-                   <widget class="QLabel" name="label_6">
+                   <widget class="QLabel" name="e1Label2">
                     <property name="text">
                      <string>V</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="0">
-                   <widget class="QLabel" name="label_5">
+                   <widget class="QLabel" name="e1Label3">
                     <property name="text">
-                     <string>Resolution = </string>
+                     <string>Duration = </string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QLineEdit" name="lineEdit_2"/>
+                   <widget class="QLineEdit" name="e1LineEdit2">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
                   </item>
                   <item row="1" column="2">
-                   <widget class="QLabel" name="label_7">
+                   <widget class="QLabel" name="e1Label4">
                     <property name="text">
-                     <string>V</string>
+                     <string>min</string>
                     </property>
                    </widget>
                   </item>
@@ -384,6 +417,12 @@ border: none;
           </item>
           <item>
            <widget class="QFrame" name="electrode2ParameterFrame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="styleSheet">
              <string notr="true">#electrode2ParameterFrame {
 border-radius: 10px;
@@ -461,36 +500,44 @@ border: none;
                 <item>
                  <layout class="QGridLayout" name="gridLayout_2">
                   <item row="0" column="0">
-                   <widget class="QLabel" name="label_10">
+                   <widget class="QLabel" name="e2Label1">
                     <property name="text">
-                     <string>Time step = </string>
+                     <string>Anode Potential = </string>
                     </property>
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QLineEdit" name="lineEdit_3"/>
+                   <widget class="QLineEdit" name="e2LineEdit1">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
                   </item>
                   <item row="0" column="2">
-                   <widget class="QLabel" name="label_11">
+                   <widget class="QLabel" name="e2Label2">
                     <property name="text">
-                     <string>S</string>
+                     <string>V</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="0">
-                   <widget class="QLabel" name="label_12">
+                   <widget class="QLabel" name="e2Label3">
                     <property name="text">
-                     <string>Resolution = </string>
+                     <string>Duration = </string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QLineEdit" name="lineEdit_4"/>
+                   <widget class="QLineEdit" name="e2LineEdit2">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
                   </item>
                   <item row="1" column="2">
-                   <widget class="QLabel" name="label_13">
+                   <widget class="QLabel" name="e2Label4">
                     <property name="text">
-                     <string>V</string>
+                     <string>min</string>
                     </property>
                    </widget>
                   </item>
@@ -567,23 +614,161 @@ QPushButton:hover{
             </property>
            </spacer>
           </item>
+          <item>
+           <widget class="QPushButton" name="deletePushButton">
+            <property name="styleSheet">
+             <string notr="true">
+
+QPushButton {
+ background-color: #CC6A29;
+
+ border-radius:25px;
+
+ max-width:50px;
+ max-height:50px;
+ min-width:50px;
+ min-height:50px;
+ }
+
+ QPushButton:pressed {
+     background-color: #DB722C;
+ }
+
+QPushButton:hover{
+	border: 1px solid white;
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="Icons.qrc">
+              <normaloff>:/icons/icons/minus-512.png</normaloff>:/icons/icons/minus-512.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="deleteAllPushButton">
+            <property name="styleSheet">
+             <string notr="true">
+
+QPushButton {
+ background-color: #C73644;
+
+ border-radius:25px;
+
+ max-width:50px;
+ max-height:50px;
+ min-width:50px;
+ min-height:50px;
+ }
+
+ QPushButton:pressed {
+     background-color: #DB3B4B;
+ }
+
+QPushButton:hover{
+	border: 1px solid white;
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="Icons.qrc">
+              <normaloff>:/icons/icons/eraser-512.png</normaloff>:/icons/icons/eraser-512.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_13">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="enabled">
+           <bool>true</bool>
           </property>
-          <property name="sizeHint" stdset="0">
+          <property name="minimumSize">
            <size>
-            <width>20</width>
-            <height>131</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QListView" name="listView"/>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>288</number>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>200</number>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Electrode 1 Experiment</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="textAlignment">
+            <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Electrode 2 Experiment</string>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="textAlignment">
+            <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+           </property>
+          </column>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label">
@@ -792,7 +977,7 @@ border-left: 1px solid black;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1074</width>
+     <width>1270</width>
      <height>26</height>
     </rect>
    </property>
