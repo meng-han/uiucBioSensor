@@ -34,11 +34,32 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void on_e1SPRadioButton_clicked();
+
+    void on_e2SPRadioButton_clicked();
+
+    void on_e1LSVRadioButton_clicked();
+
+    void on_e2LSVRadioButton_clicked();
+
+    void on_e1OCVRadioButton_clicked();
+
+    void on_e2OCVRadioButton_clicked();
+
+    void on_addToButton_clicked();
+
+    void on_deleteAllPushButton_clicked();
+
+    void on_deletePushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSerialPort *port;
     QByteArray receivedData;
     SettingsDialog *settings;
+    // MODE: 1, SET POTENTIAL; 2, LSV; 3, OCV.
+    int e1Mode;
+    int e2Mode;
 
 };
 
