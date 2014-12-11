@@ -27,30 +27,26 @@ public:
 private slots:
     void on_startPushButton_clicked();
     void onSerialReceived();
-
     void on_stopPushButton_clicked();
-
     void on_actionConfigure_triggered();
-
     void on_actionAbout_triggered();
-
     void on_e1SPRadioButton_clicked();
-
     void on_e2SPRadioButton_clicked();
-
     void on_e1LSVRadioButton_clicked();
-
     void on_e2LSVRadioButton_clicked();
-
     void on_e1OCVRadioButton_clicked();
-
     void on_e2OCVRadioButton_clicked();
-
     void on_addToButton_clicked();
-
     void on_deleteAllPushButton_clicked();
-
     void on_deletePushButton_clicked();
+    void on_e1LSCVRadioButton_clicked();
+    void on_e2LSCVRadioButton_clicked();
+    void enable_all_radioButtonE1();
+    void enable_all_radioButtonE2();
+
+    void on_e1NoneRadioButton_clicked();
+
+    void on_e2NoneRadioButton_clicked();
 
 private:
     Ui::MainWindow *ui;
