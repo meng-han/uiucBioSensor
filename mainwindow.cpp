@@ -15,11 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(port, SIGNAL(readyRead()), this, SLOT(onSerialReceived()));
     settings = new SettingsDialog;
 
-    ui->e1NoneRadioButton->click();
-    this->on_e1NoneRadioButton_clicked();
+    ui->e1SPRadioButton->click();
+    this->on_e1SPRadioButton_clicked();
 
-    ui->e2NoneRadioButton->click();
-    this->on_e2NoneRadioButton_clicked();
+    ui->e2SPRadioButton->click();
+    this->on_e2SPRadioButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -358,10 +358,12 @@ void MainWindow::on_addToButton_clicked()
     modeList.append("Set Potential");
     modeList.append("LSV");
     modeList.append("OCV");
+    modeList.append("LSCV");
     //The following validation needs to be stronger.
     //Check whether there is parameters;
     //Check whether input parameters are valid;
-    if ( (this->e1Mode == 1 || this->e1Mode == 2 || this->e1Mode == 3) && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3))
+    if ( (this->e1Mode == 1 || this->e1Mode == 2 || this->e1Mode == 3 || this->e1Mode == 4)
+         && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3 || this->e2Mode == 4))
     {
         int row = ui->tableWidget->rowCount();
         ui->tableWidget->insertRow(row);
