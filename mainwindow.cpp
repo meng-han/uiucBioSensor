@@ -15,12 +15,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(port, SIGNAL(readyRead()), this, SLOT(onSerialReceived()));
     settings = new SettingsDialog;
 
-    ui->e1SPRadioButton->click();
-    this->on_e1SPRadioButton_clicked();
+    ui->e1NoneRadioButton->click();
+    this->on_e1NoneRadioButton_clicked();
 
-    ui->e2SPRadioButton->click();
-    this->on_e2SPRadioButton_clicked();
-
+    ui->e2NoneRadioButton->click();
+    this->on_e2NoneRadioButton_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -94,9 +93,20 @@ void MainWindow::on_actionAbout_triggered()
     about->exec();
 }
 
+/************************************RADIO BUTTONS**********************************/
+
+/**
+ * @brief MainWindow::on_e1SPRadioButton_clicked
+ * SET POTENTIAL
+ * ELECTRODE 1
+ */
 void MainWindow::on_e1SPRadioButton_clicked()
 {
     this->e1Mode = 1; //SET POTENTIAL = 1
+    this->enable_all_radioButtonE2();
+    ui->e2LSVRadioButton->setEnabled(false);
+    ui->e2LSCVRadioButton->setEnabled(false);
+
     ui->e1Label1->setText("Anode Potential = ");
     ui->e1Label2->setText("V");
     if (ui->e1Label3->isHidden()) ui->e1Label3->show();
@@ -108,11 +118,23 @@ void MainWindow::on_e1SPRadioButton_clicked()
     ui->e1LineEdit1->setValidator(new QDoubleValidator(-100, 0, 5, this));
     ui->e1LineEdit2->setValidator(new QIntValidator(0, 9999999, this));
 
+    ui->e1Label5->hide();
+    ui->e1LineEdit3->hide();
 }
 
+/**
+ * @brief MainWindow::on_e2SPRadioButton_clicked
+ * SET POTENTIAL
+ * ELECTRODE 2
+ */
 void MainWindow::on_e2SPRadioButton_clicked()
 {
     this->e2Mode = 1; //SET POTENTIAL = 1
+
+    this->enable_all_radioButtonE1();
+    ui->e1LSVRadioButton->setEnabled(false);
+    ui->e1LSCVRadioButton->setEnabled(false);
+
     ui->e2Label1->setText("Anode Potential = ");
     ui->e2Label2->setText("V");
     if (ui->e2Label3->isHidden()) ui->e2Label3->show();
@@ -123,11 +145,25 @@ void MainWindow::on_e2SPRadioButton_clicked()
 
     ui->e2LineEdit1->setValidator(new QDoubleValidator(-100, 0, 5, this));
     ui->e2LineEdit2->setValidator(new QIntValidator(0, 9999999, this));
+
+    ui->e2Label5->hide();
+    ui->e2LineEdit3->hide();
 }
+
+/**
+ * @brief MainWindow::on_e1LSVRadioButton_clicked
+ * LSV
+ * ELECTRODE 1
+ */
 
 void MainWindow::on_e1LSVRadioButton_clicked()
 {
     this->e1Mode = 2; //LSV = 2
+    this->enable_all_radioButtonE2();
+    ui->e2SPRadioButton->setEnabled(false);
+    ui->e2LSVRadioButton->setEnabled(false);
+    ui->e2LSCVRadioButton->setEnabled(false);
+
     ui->e1Label1->setText("Scan Rate = ");
     ui->e1Label2->setText("mV/s");
     if (ui->e1Label3->isHidden()) ui->e1Label3->show();
@@ -139,11 +175,26 @@ void MainWindow::on_e1LSVRadioButton_clicked()
     ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
     ui->e1LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
 
+    ui->e1Label5->hide();
+    ui->e1LineEdit3->hide();
 }
+
+
+/**
+ * @brief MainWindow::on_e2LSVRadioButton_clicked
+ * LSV
+ * ELECTRODE 2
+ */
 
 void MainWindow::on_e2LSVRadioButton_clicked()
 {
     this->e2Mode = 2; //LSV = 2;
+
+    this->enable_all_radioButtonE1();
+    ui->e1SPRadioButton->setEnabled(false);
+    ui->e1LSVRadioButton->setEnabled(false);
+    ui->e1LSCVRadioButton->setEnabled(false);
+
     ui->e2Label1->setText("Scan Rate = ");
     ui->e2Label2->setText("mV/s");
     if (ui->e2Label3->isHidden()) ui->e2Label3->show();
@@ -154,11 +205,22 @@ void MainWindow::on_e2LSVRadioButton_clicked()
 
     ui->e2LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
     ui->e2LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
+
+    ui->e2Label5->hide();
+    ui->e2LineEdit3->hide();
 }
+
+
+/**
+ * @brief MainWindow::on_e1OCVRadioButton_clicked
+ * OCV
+ * ELECTRODE 1
+ */
 
 void MainWindow::on_e1OCVRadioButton_clicked()
 {
     this->e1Mode = 3; //OCV = 3;
+    this->enable_all_radioButtonE2();
     ui->e1Label1->setText("Duration = ");
     ui->e1Label2->setText("min");
     ui->e1Label3->hide();
@@ -167,11 +229,22 @@ void MainWindow::on_e1OCVRadioButton_clicked()
 
     ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
 
+    ui->e1Label5->hide();
+    ui->e1LineEdit3->hide();
+
 }
+
+
+/**
+ * @brief MainWindow::on_e2OCVRadioButton_clicked
+ * OCV
+ * ELECTRODE 2
+ */
 
 void MainWindow::on_e2OCVRadioButton_clicked()
 {
     this->e2Mode = 3; //OCV = 3;
+    this->enable_all_radioButtonE1();
     ui->e2Label1->setText("Duration = ");
     ui->e2Label2->setText("min");
     ui->e2Label3->hide();
@@ -180,7 +253,104 @@ void MainWindow::on_e2OCVRadioButton_clicked()
 
     ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
 
+    ui->e2Label5->hide();
+    ui->e2LineEdit3->hide();
+
 }
+
+/**
+ * @brief MainWindow::on_e1LSCVRadioButton_clicked
+ * LSCV
+ * ELECTRODE 1
+ */
+
+void MainWindow::on_e1LSCVRadioButton_clicked()
+{
+    this->e1Mode = 4; //LSCV = 4
+    this->enable_all_radioButtonE2();
+    ui->e2SPRadioButton->setEnabled(false);
+    ui->e2LSVRadioButton->setEnabled(false);
+    ui->e2LSCVRadioButton->setEnabled(false);
+    ui->e1Label1->setText("Scan Rate = ");
+    ui->e1Label2->setText("mV/s");
+    ui->e1Label3->setText("Max Anode = ");
+    ui->e1Label4->setText("V");
+    ui->e1Label5->setText("# of Cycles");
+    if (ui->e1Label3->isHidden()) ui->e1Label3->show();
+    if (ui->e1Label4->isHidden()) ui->e1Label4->show();
+    if (ui->e1LineEdit2->isHidden()) ui->e1LineEdit2->show();
+    if (ui->e1Label5->isHidden()) ui->e1Label5->show();
+    if (ui->e1LineEdit3->isHidden()) ui->e1LineEdit3->show();
+
+    ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e1LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
+    ui->e1LineEdit3->setValidator(new QIntValidator(0, 9999999, this));
+}
+
+/**
+ * @brief MainWindow::on_e2LSCVRadioButton_clicked
+ * LSCV
+ * ELECTRODE 2
+ */
+
+void MainWindow::on_e2LSCVRadioButton_clicked()
+{
+    this->e2Mode = 4; //LSCV = 4
+
+    this->enable_all_radioButtonE1();
+    ui->e1SPRadioButton->setEnabled(false);
+    ui->e1LSVRadioButton->setEnabled(false);
+    ui->e1LSCVRadioButton->setEnabled(false);
+
+    ui->e2Label1->setText("Scan Rate = ");
+    ui->e2Label2->setText("mV/s");
+    ui->e2Label3->setText("Max Anode = ");
+    ui->e2Label4->setText("V");
+    ui->e2Label5->setText("# of Cycles");
+    if (ui->e2Label3->isHidden()) ui->e2Label3->show();
+    if (ui->e2Label4->isHidden()) ui->e2Label4->show();
+    if (ui->e2LineEdit2->isHidden()) ui->e2LineEdit2->show();
+    if (ui->e2Label5->isHidden()) ui->e2Label5->show();
+    if (ui->e2LineEdit3->isHidden()) ui->e2LineEdit3->show();
+
+    ui->e2LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e2LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
+    ui->e2LineEdit3->setValidator(new QIntValidator(0, 9999999, this));
+}
+
+void MainWindow::enable_all_radioButtonE1()
+{
+    ui->e1SPRadioButton->setEnabled(true);
+    ui->e1LSVRadioButton->setEnabled(true);
+    ui->e1LSCVRadioButton->setEnabled(true);
+    ui->e1OCVRadioButton->setEnabled(true);
+    ui->e1NoneRadioButton->setEnabled(true);
+}
+
+void MainWindow::enable_all_radioButtonE2()
+{
+    ui->e2SPRadioButton->setEnabled(true);
+    ui->e2LSVRadioButton->setEnabled(true);
+    ui->e2LSCVRadioButton->setEnabled(true);
+    ui->e2OCVRadioButton->setEnabled(true);
+    ui->e2NoneRadioButton->setEnabled(true);
+}
+
+void MainWindow::on_e1NoneRadioButton_clicked()
+{
+    this->enable_all_radioButtonE2();
+}
+
+void MainWindow::on_e2NoneRadioButton_clicked()
+{
+    this->enable_all_radioButtonE1();
+}
+
+
+
+/************************************END OF RADIO BUTTONS**********************************/
+
+
 
 void MainWindow::on_addToButton_clicked()
 {
@@ -225,3 +395,4 @@ void MainWindow::on_deletePushButton_clicked()
         ui->tableWidget->removeRow(rowToDelete);
     }
 }
+

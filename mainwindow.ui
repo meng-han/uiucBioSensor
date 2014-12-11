@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1270</width>
-    <height>745</height>
+    <width>1381</width>
+    <height>792</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -178,6 +178,13 @@ border: none;
                    </widget>
                   </item>
                   <item>
+                   <widget class="QRadioButton" name="e1LSCVRadioButton">
+                    <property name="text">
+                     <string>LSCV</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QRadioButton" name="e1OCVRadioButton">
                     <property name="styleSheet">
                      <string notr="true"/>
@@ -188,7 +195,7 @@ border: none;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButton_7">
+                   <widget class="QRadioButton" name="e1NoneRadioButton">
                     <property name="text">
                      <string>None</string>
                     </property>
@@ -253,6 +260,13 @@ border: none;
                    </widget>
                   </item>
                   <item>
+                   <widget class="QRadioButton" name="e2LSCVRadioButton">
+                    <property name="text">
+                     <string>LSCV</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QRadioButton" name="e2OCVRadioButton">
                     <property name="text">
                      <string>OCV</string>
@@ -260,7 +274,7 @@ border: none;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButton_8">
+                   <widget class="QRadioButton" name="e2NoneRadioButton">
                     <property name="text">
                      <string>None</string>
                     </property>
@@ -379,10 +393,10 @@ border: none;
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="2">
-                   <widget class="QLabel" name="e1Label2">
-                    <property name="text">
-                     <string>V</string>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="e1LineEdit2">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -393,10 +407,10 @@ border: none;
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="1">
-                   <widget class="QLineEdit" name="e1LineEdit2">
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="e1Label2">
+                    <property name="text">
+                     <string>V</string>
                     </property>
                    </widget>
                   </item>
@@ -404,6 +418,20 @@ border: none;
                    <widget class="QLabel" name="e1Label4">
                     <property name="text">
                      <string>min</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="e1Label5">
+                    <property name="text">
+                     <string># of Cycles</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="e1LineEdit3">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -506,6 +534,13 @@ border: none;
                     </property>
                    </widget>
                   </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="e2Label3">
+                    <property name="text">
+                     <string>Duration = </string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="1">
                    <widget class="QLineEdit" name="e2LineEdit1">
                     <property name="alignment">
@@ -520,13 +555,6 @@ border: none;
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="e2Label3">
-                    <property name="text">
-                     <string>Duration = </string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="1" column="1">
                    <widget class="QLineEdit" name="e2LineEdit2">
                     <property name="alignment">
@@ -538,6 +566,20 @@ border: none;
                    <widget class="QLabel" name="e2Label4">
                     <property name="text">
                      <string>min</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="e2Label5">
+                    <property name="text">
+                     <string># of Cycles</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="e2LineEdit3">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -977,7 +1019,7 @@ border-left: 1px solid black;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1270</width>
+     <width>1381</width>
      <height>26</height>
     </rect>
    </property>
