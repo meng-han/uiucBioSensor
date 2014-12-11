@@ -30,6 +30,7 @@ MainWindow::~MainWindow()
 /**
  * @brief MainWindow::on_startPushButton_clicked
  * This method is triggerred by clicking on start button
+ * THIS WORKS FOR TESTING WITH ARDUINO
  */
 void MainWindow::on_startPushButton_clicked()
 {
@@ -41,6 +42,11 @@ void MainWindow::on_startPushButton_clicked()
     port->setStopBits(p.stopBits);
     port->setFlowControl(p.flowControl);
     port->open(QIODevice::ReadWrite);
+    qDebug() << port->isOpen();
+    QByteArray ba("a");
+    port->write(ba);
+    port->flush();
+    //port->close();
 }
 
 /**
@@ -54,7 +60,7 @@ void MainWindow::onSerialReceived()
     QByteArray tempReceivedData = port->readAll();
     this->receivedData.append(tempReceivedData);
 
-    if (tempReceivedData.size()!=4)
+    if (tempReceivedData.size() < 4)
     {
         qDebug() << this->receivedData;
         ui->label->setText(this->receivedData);
