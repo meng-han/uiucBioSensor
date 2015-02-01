@@ -35,21 +35,21 @@ QString validateExp::validateElectrode(int mode, QString d1, QString d2, QString
     case 2:
     {
         if(d1.isEmpty() || d2.isEmpty()) return "Error: Please fill in all necessary parameters.";
-        if(d1.toDouble() <= 0) return "Error: Please specify negative values to Scan Rate.";
+        if(d1.toDouble() <= 0) return "Error: Please specify positive values to Scan Rate.";
         break;
     }
     case 3:
     {
         if(d1.isEmpty() || d2.isEmpty()) return "Error: Please fill in all necessary parameters.";
-        if(d1.toDouble() <= 0) return "Error: Please specify negative values to Duration.";
-        if(d2.toDouble() <= 0) return "Error: Please specify negative values to Time Interval.";
+        if(d1.toDouble() <= 0) return "Error: Please specify positive values to Duration.";
+        if(d2.toDouble() <= 0) return "Error: Please specify positive values to Time Interval.";
         break;
     }
     case 4:
     {
         if(d1.isEmpty() || d2.isEmpty()||d3.isEmpty()) return "Error: Please fill in all necessary parameters.";
-        if(d1.toDouble() <= 0) return "Error: Please specify negative values to Scan Rate.";
-        if(d3.toDouble() <= 0) return "Error: Please specify negative values to # of Cycles.";
+        if(d1.toDouble() <= 0) return "Error: Please specify positive values to Scan Rate.";
+        if(d3.toDouble() <= 0) return "Error: Please specify positive values to # of Cycles.";
         break;
     }
     default:break;
