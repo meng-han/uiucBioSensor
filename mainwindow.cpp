@@ -108,6 +108,8 @@ void MainWindow::on_actionAbout_triggered()
  */
 void MainWindow::on_e1SPRadioButton_clicked()
 {
+    if(!ui->e1SPRadioButton->isChecked())
+        ui->e1SPRadioButton->setChecked(true);
     this->e1Mode = 1; //SET POTENTIAL = 1
     this->enable_all_radioButtonE2();
     ui->e2LSVRadioButton->setEnabled(false);
@@ -115,17 +117,24 @@ void MainWindow::on_e1SPRadioButton_clicked()
 
     ui->e1Label1->setText("Anode Potential = ");
     ui->e1Label2->setText("V");
+
     if (ui->e1Label3->isHidden()) ui->e1Label3->show();
     if (ui->e1Label4->isHidden()) ui->e1Label4->show();
+    if (ui->e1Label5->isHidden()) ui->e1Label5->show();
+    if (ui->e1Label6->isHidden()) ui->e1Label6->show();
+
     if (ui->e1LineEdit2->isHidden()) ui->e1LineEdit2->show();
+    if (ui->e1LineEdit3->isHidden()) ui->e1LineEdit3->show();
+
     ui->e1Label3->setText("Duration = ");
     ui->e1Label4->setText("min");
 
+    ui->e1Label5->setText("Time Interval = ");
+    ui->e1Label6->setText("s");
+
     ui->e1LineEdit1->setValidator(new QDoubleValidator(-100, 0, 5, this));
     ui->e1LineEdit2->setValidator(new QIntValidator(0, 9999999, this));
-
-    ui->e1Label5->hide();
-    ui->e1LineEdit3->hide();
+    ui->e1LineEdit3->setValidator(new QIntValidator(0,999999,this));
 }
 
 /**
@@ -135,6 +144,8 @@ void MainWindow::on_e1SPRadioButton_clicked()
  */
 void MainWindow::on_e2SPRadioButton_clicked()
 {
+    if(!ui->e2SPRadioButton->isChecked())
+        ui->e2SPRadioButton->setChecked(true);
     this->e2Mode = 1; //SET POTENTIAL = 1
 
     this->enable_all_radioButtonE1();
@@ -145,15 +156,21 @@ void MainWindow::on_e2SPRadioButton_clicked()
     ui->e2Label2->setText("V");
     if (ui->e2Label3->isHidden()) ui->e2Label3->show();
     if (ui->e2Label4->isHidden()) ui->e2Label4->show();
+    if (ui->e2Label5->isHidden()) ui->e2Label5->show();
+    if (ui->e2Label6->isHidden()) ui->e2Label6->show();
+
     if (ui->e2LineEdit2->isHidden()) ui->e2LineEdit2->show();
+    if (ui->e2LineEdit3->isHidden()) ui->e2LineEdit3->show();
+
     ui->e2Label3->setText("Duration = ");
     ui->e2Label4->setText("min");
 
+    ui->e2Label5->setText("Time Interval = ");
+    ui->e2Label6->setText("s");
+
     ui->e2LineEdit1->setValidator(new QDoubleValidator(-100, 0, 5, this));
     ui->e2LineEdit2->setValidator(new QIntValidator(0, 9999999, this));
-
-    ui->e2Label5->hide();
-    ui->e2LineEdit3->hide();
+    ui->e2LineEdit3->setValidator(new QIntValidator(0,999999,this));
 }
 
 /**
@@ -164,6 +181,8 @@ void MainWindow::on_e2SPRadioButton_clicked()
 
 void MainWindow::on_e1LSVRadioButton_clicked()
 {
+    if(!ui->e1LSVRadioButton->isChecked())
+        ui->e1LSVRadioButton->setChecked(true);
     this->e1Mode = 2; //LSV = 2
     this->enable_all_radioButtonE2();
     ui->e2SPRadioButton->setEnabled(false);
@@ -182,6 +201,7 @@ void MainWindow::on_e1LSVRadioButton_clicked()
     ui->e1LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
 
     ui->e1Label5->hide();
+    ui->e1Label6->hide();
     ui->e1LineEdit3->hide();
 }
 
@@ -194,6 +214,8 @@ void MainWindow::on_e1LSVRadioButton_clicked()
 
 void MainWindow::on_e2LSVRadioButton_clicked()
 {
+    if(!ui->e2LSVRadioButton->isChecked())
+        ui->e2LSVRadioButton->setChecked(true);
     this->e2Mode = 2; //LSV = 2;
 
     this->enable_all_radioButtonE1();
@@ -213,6 +235,7 @@ void MainWindow::on_e2LSVRadioButton_clicked()
     ui->e2LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
 
     ui->e2Label5->hide();
+    ui->e2Label6->hide();
     ui->e2LineEdit3->hide();
 }
 
@@ -225,17 +248,23 @@ void MainWindow::on_e2LSVRadioButton_clicked()
 
 void MainWindow::on_e1OCVRadioButton_clicked()
 {
+    if(!ui->e1OCVRadioButton->isChecked())
+        ui->e1OCVRadioButton->setChecked(true);
     this->e1Mode = 3; //OCV = 3;
     this->enable_all_radioButtonE2();
     ui->e1Label1->setText("Duration = ");
     ui->e1Label2->setText("min");
-    ui->e1Label3->hide();
-    ui->e1Label4->hide();
-    ui->e1LineEdit2->hide();
+    ui->e1Label3->setText("Time Interval = ");
+    ui->e1Label4->setText("s");
+    if (ui->e1Label3->isHidden()) ui->e1Label3->show();
+    if (ui->e1Label4->isHidden()) ui->e1Label4->show();
+    if (ui->e1LineEdit2->isHidden()) ui->e1LineEdit2->show();
 
     ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e1LineEdit2->setValidator(new QIntValidator(0, 9999999, this));
 
     ui->e1Label5->hide();
+    ui->e1Label6->hide();
     ui->e1LineEdit3->hide();
 
 }
@@ -249,17 +278,23 @@ void MainWindow::on_e1OCVRadioButton_clicked()
 
 void MainWindow::on_e2OCVRadioButton_clicked()
 {
+    if(!ui->e2OCVRadioButton->isChecked())
+        ui->e2OCVRadioButton->setChecked(true);
     this->e2Mode = 3; //OCV = 3;
     this->enable_all_radioButtonE1();
     ui->e2Label1->setText("Duration = ");
     ui->e2Label2->setText("min");
-    ui->e2Label3->hide();
-    ui->e2Label4->hide();
-    ui->e2LineEdit2->hide();
+    ui->e2Label3->setText("Time Interval = ");
+    ui->e2Label4->setText("s");
+    if (ui->e2Label3->isHidden()) ui->e2Label3->show();
+    if (ui->e2Label4->isHidden()) ui->e2Label4->show();
+    if (ui->e2LineEdit2->isHidden()) ui->e2LineEdit2->show();
 
-    ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e2LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e2LineEdit2->setValidator(new QIntValidator(0, 9999999, this));
 
     ui->e2Label5->hide();
+    ui->e2Label6->hide();
     ui->e2LineEdit3->hide();
 
 }
@@ -272,6 +307,8 @@ void MainWindow::on_e2OCVRadioButton_clicked()
 
 void MainWindow::on_e1LSCVRadioButton_clicked()
 {
+    if(!ui->e1LSCVRadioButton->isChecked())
+        ui->e1LSCVRadioButton->setChecked(true);
     this->e1Mode = 4; //LSCV = 4
     this->enable_all_radioButtonE2();
     ui->e2SPRadioButton->setEnabled(false);
@@ -282,6 +319,7 @@ void MainWindow::on_e1LSCVRadioButton_clicked()
     ui->e1Label3->setText("Max Anode = ");
     ui->e1Label4->setText("V");
     ui->e1Label5->setText("# of Cycles");
+    ui->e1Label6->hide();
     if (ui->e1Label3->isHidden()) ui->e1Label3->show();
     if (ui->e1Label4->isHidden()) ui->e1Label4->show();
     if (ui->e1LineEdit2->isHidden()) ui->e1LineEdit2->show();
@@ -301,6 +339,8 @@ void MainWindow::on_e1LSCVRadioButton_clicked()
 
 void MainWindow::on_e2LSCVRadioButton_clicked()
 {
+    if(!ui->e2LSCVRadioButton->isChecked())
+        ui->e2LSCVRadioButton->setChecked(true);
     this->e2Mode = 4; //LSCV = 4
 
     this->enable_all_radioButtonE1();
@@ -313,6 +353,7 @@ void MainWindow::on_e2LSCVRadioButton_clicked()
     ui->e2Label3->setText("Max Anode = ");
     ui->e2Label4->setText("V");
     ui->e2Label5->setText("# of Cycles");
+    ui->e2Label6->hide();
     if (ui->e2Label3->isHidden()) ui->e2Label3->show();
     if (ui->e2Label4->isHidden()) ui->e2Label4->show();
     if (ui->e2LineEdit2->isHidden()) ui->e2LineEdit2->show();
@@ -357,6 +398,27 @@ void MainWindow::on_e2NoneRadioButton_clicked()
 /************************************END OF RADIO BUTTONS**********************************/
 
 
+QString MainWindow::constructExpString()
+{
+    QString tempExp = "";
+    tempExp.append(QString::number(this->e1Mode));
+    tempExp.append(",");
+    tempExp.append(ui->e1LineEdit1->text());
+    tempExp.append(",");
+    tempExp.append(ui->e1LineEdit2->text());
+    tempExp.append(",");
+    tempExp.append(ui->e1LineEdit3->text());
+    tempExp.append(",");
+
+    tempExp.append(QString::number(this->e2Mode));
+    tempExp.append(",");
+    tempExp.append(ui->e2LineEdit1->text());
+    tempExp.append(",");
+    tempExp.append(ui->e2LineEdit2->text());
+    tempExp.append(",");
+    tempExp.append(ui->e2LineEdit3->text());
+    return tempExp;
+}
 
 void MainWindow::on_addToButton_clicked()
 {
@@ -371,20 +433,44 @@ void MainWindow::on_addToButton_clicked()
     if ( (this->e1Mode == 1 || this->e1Mode == 2 || this->e1Mode == 3 || this->e1Mode == 4)
          && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3 || this->e2Mode == 4))
     {
-        int row = ui->tableWidget->rowCount();
-        ui->tableWidget->insertRow(row);
-        QTableWidgetItem *item = new QTableWidgetItem(modeList[this->e1Mode - 1]);
-        ui->tableWidget->setItem(row, 0, item);
-        item->setTextAlignment(Qt::AlignCenter);
+        QString expString = constructExpString();
+        QString result = this->validator.validate(expString);
 
-        QTableWidgetItem *itemE2 = new QTableWidgetItem(modeList[this->e2Mode - 1]);
-        ui->tableWidget->setItem(row, 1, itemE2);
-        itemE2->setTextAlignment(Qt::AlignCenter);
+        QStringList e1e2Results = result.split(";");
+        if(e1e2Results[0].startsWith("Y")&&e1e2Results[1].startsWith("Y"))
+        {
+            this->e1e2Experiments.append(expString);
+
+            int row = ui->tableWidget->rowCount();
+            ui->tableWidget->insertRow(row);
+            QTableWidgetItem *item = new QTableWidgetItem(modeList[this->e1Mode - 1]);
+            ui->tableWidget->setItem(row, 0, item);
+            item->setTextAlignment(Qt::AlignCenter);
+
+            QTableWidgetItem *itemE2 = new QTableWidgetItem(modeList[this->e2Mode - 1]);
+            ui->tableWidget->setItem(row, 1, itemE2);
+            itemE2->setTextAlignment(Qt::AlignCenter);
+        }
+        else{
+            QString errorMessage = "Please refer to following errors:\n\n";
+            errorMessage.append("Electrode 1: \n\t");
+            errorMessage.append(e1e2Results[0]);
+            errorMessage.append("\n\n");
+            errorMessage.append("Electrode 2: \n\t");
+            errorMessage.append(e1e2Results[1]);
+            QMessageBox::warning(this, "Error", errorMessage
+                                            );
+        }
+
+        qDebug() << expString;
+        qDebug() << result;
+
     }
 }
 
 void MainWindow::on_deleteAllPushButton_clicked()
 {
+    // Clear on front end
     // Clear table widget
     int row = ui->tableWidget->rowCount();
     while(row>0)
@@ -392,15 +478,57 @@ void MainWindow::on_deleteAllPushButton_clicked()
         ui->tableWidget->removeRow(0);
         row --;
     }
+    // Clear on back end
+    this->e1e2Experiments.clear();
 }
-
+/**
+ * @brief MainWindow::on_deletePushButton_clicked
+ * Delete a certain experiment
+ * Front end: remove from table
+ * Back end: remove from experiment list
+ */
 void MainWindow::on_deletePushButton_clicked()
 {
     QList<QTableWidgetItem *> selectedFiles = ui->tableWidget->selectedItems();
-    for (int i = selectedFiles.size() - 1; i >= 0; i -= 7)
+    qDebug() << selectedFiles.size();
+    if(selectedFiles.size()>0)
     {
-        int rowToDelete = selectedFiles[i]->row();
+        int rowToDelete = selectedFiles[0]->row();
         ui->tableWidget->removeRow(rowToDelete);
     }
+
 }
 
+/**
+ * @brief MainWindow::on_tableWidget_cellDoubleClicked
+ * @param row
+ * @param column
+ * When a cell/row gets double clicked, it will retrive its previous input data and display it
+ */
+void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
+{
+    QStringList inputData = this->e1e2Experiments[row].split(",");
+    switch(inputData[0].toInt())
+    {
+    case 1:this->on_e1SPRadioButton_clicked();break;
+    case 2:this->on_e1LSVRadioButton_clicked();break;
+    case 3:this->on_e1OCVRadioButton_clicked();break;
+    case 4:this->on_e1LSCVRadioButton_clicked();break;
+    default:break;
+    }
+    switch(inputData[4].toInt())
+    {
+    case 1:this->on_e2SPRadioButton_clicked();break;
+    case 2:this->on_e2LSVRadioButton_clicked();break;
+    case 3:this->on_e2OCVRadioButton_clicked();break;
+    case 4:this->on_e2LSCVRadioButton_clicked();break;
+    default:break;
+    }
+    ui->e1LineEdit1->setText(inputData[1]);
+    ui->e1LineEdit2->setText(inputData[2]);
+    ui->e1LineEdit3->setText(inputData[3]);
+    ui->e2LineEdit1->setText(inputData[5]);
+    ui->e2LineEdit2->setText(inputData[6]);
+    ui->e2LineEdit3->setText(inputData[7]);
+
+}

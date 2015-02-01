@@ -8,9 +8,12 @@
 #include <QtCore/QList>
 #include <QtCore/QDebug>
 #include <QDialog>
+#include <QMessageBox>
 
 #include "settingsdialog.h"
 #include "aboutdialog.h"
+
+#include "validateexp.h"
 
 namespace Ui {
 class MainWindow;
@@ -43,19 +46,22 @@ private slots:
     void on_e2LSCVRadioButton_clicked();
     void enable_all_radioButtonE1();
     void enable_all_radioButtonE2();
-
     void on_e1NoneRadioButton_clicked();
-
     void on_e2NoneRadioButton_clicked();
+
+    void on_tableWidget_cellDoubleClicked(int row, int column);
 
 private:
     Ui::MainWindow *ui;
     QSerialPort *port;
     QByteArray receivedData;
     SettingsDialog *settings;
-    // MODE: 1, SET POTENTIAL; 2, LSV; 3, OCV.
+    // MODE: 1, SET POTENTIAL; 2, LSV; 3, OCV; 4, LSCV.
     int e1Mode;
     int e2Mode;
+    QStringList e1e2Experiments;  //Records all experiments in a list
+    QString constructExpString();
+    validateExp validator;
 
 };
 
