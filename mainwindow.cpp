@@ -15,11 +15,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(port, SIGNAL(readyRead()), this, SLOT(onSerialReceived()));
     settings = new SettingsDialog;
 
+    readOnlyPalette->setColor(QPalette::Base,Qt::gray);
+    normalPalette->setColor(QPalette::Base,Qt::white);
+
     ui->e1SPRadioButton->click();
     this->on_e1SPRadioButton_clicked();
 
     ui->e2SPRadioButton->click();
     this->on_e2SPRadioButton_clicked();
+
+    ui->editPushButton->setEnabled(false);
+    ui->savePushButton->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -108,6 +114,10 @@ void MainWindow::on_actionAbout_triggered()
  */
 void MainWindow::on_e1SPRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e1SPRadioButton->isChecked())
         ui->e1SPRadioButton->setChecked(true);
     this->e1Mode = 1; //SET POTENTIAL = 1
@@ -144,6 +154,10 @@ void MainWindow::on_e1SPRadioButton_clicked()
  */
 void MainWindow::on_e2SPRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e2SPRadioButton->isChecked())
         ui->e2SPRadioButton->setChecked(true);
     this->e2Mode = 1; //SET POTENTIAL = 1
@@ -181,6 +195,10 @@ void MainWindow::on_e2SPRadioButton_clicked()
 
 void MainWindow::on_e1LSVRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e1LSVRadioButton->isChecked())
         ui->e1LSVRadioButton->setChecked(true);
     this->e1Mode = 2; //LSV = 2
@@ -214,6 +232,10 @@ void MainWindow::on_e1LSVRadioButton_clicked()
 
 void MainWindow::on_e2LSVRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e2LSVRadioButton->isChecked())
         ui->e2LSVRadioButton->setChecked(true);
     this->e2Mode = 2; //LSV = 2;
@@ -248,6 +270,10 @@ void MainWindow::on_e2LSVRadioButton_clicked()
 
 void MainWindow::on_e1OCVRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e1OCVRadioButton->isChecked())
         ui->e1OCVRadioButton->setChecked(true);
     this->e1Mode = 3; //OCV = 3;
@@ -278,6 +304,10 @@ void MainWindow::on_e1OCVRadioButton_clicked()
 
 void MainWindow::on_e2OCVRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e2OCVRadioButton->isChecked())
         ui->e2OCVRadioButton->setChecked(true);
     this->e2Mode = 3; //OCV = 3;
@@ -307,6 +337,10 @@ void MainWindow::on_e2OCVRadioButton_clicked()
 
 void MainWindow::on_e1LSCVRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e1LSCVRadioButton->isChecked())
         ui->e1LSCVRadioButton->setChecked(true);
     this->e1Mode = 4; //LSCV = 4
@@ -339,6 +373,10 @@ void MainWindow::on_e1LSCVRadioButton_clicked()
 
 void MainWindow::on_e2LSCVRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     if(!ui->e2LSCVRadioButton->isChecked())
         ui->e2LSCVRadioButton->setChecked(true);
     this->e2Mode = 4; //LSCV = 4
@@ -385,11 +423,19 @@ void MainWindow::enable_all_radioButtonE2()
 
 void MainWindow::on_e1NoneRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     this->enable_all_radioButtonE2();
 }
 
 void MainWindow::on_e2NoneRadioButton_clicked()
 {
+    if(ui->e1LineEdit1->isReadOnly())
+    {
+        this->setToNormalPalette();
+    }
     this->enable_all_radioButtonE1();
 }
 
@@ -502,6 +548,25 @@ void MainWindow::on_deletePushButton_clicked()
 
 }
 
+void MainWindow::setToNormalPalette(){
+    ui->editPushButton->setEnabled(false);
+    ui->savePushButton->setEnabled(false);
+
+    ui->e1LineEdit1->setReadOnly(false);
+    ui->e1LineEdit1->setPalette(*normalPalette);
+    ui->e1LineEdit2->setReadOnly(false);
+    ui->e1LineEdit2->setPalette(*normalPalette);
+    ui->e1LineEdit3->setReadOnly(false);
+    ui->e1LineEdit3->setPalette(*normalPalette);
+    ui->e2LineEdit1->setReadOnly(false);
+    ui->e2LineEdit1->setPalette(*normalPalette);
+    ui->e2LineEdit2->setReadOnly(false);
+    ui->e2LineEdit2->setPalette(*normalPalette);
+    ui->e2LineEdit3->setReadOnly(false);
+    ui->e2LineEdit3->setPalette(*normalPalette);
+}
+
+
 /**
  * @brief MainWindow::on_tableWidget_cellDoubleClicked
  * @param row
@@ -511,6 +576,7 @@ void MainWindow::on_deletePushButton_clicked()
 void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
 {
     QStringList inputData = this->e1e2Experiments[row].split(",");
+    this->currentEditting = row;
     switch(inputData[0].toInt())
     {
     case 1:this->on_e1SPRadioButton_clicked();break;
@@ -533,5 +599,70 @@ void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
     ui->e2LineEdit1->setText(inputData[5]);
     ui->e2LineEdit2->setText(inputData[6]);
     ui->e2LineEdit3->setText(inputData[7]);
+    this->setToReadOnlyPalette();
+    ui->editPushButton->setEnabled(true);
+
+    qDebug() << this->e1e2Experiments.size();
+}
+
+void MainWindow::setToReadOnlyPalette()
+{
+    ui->e1LineEdit1->setReadOnly(true);
+    ui->e1LineEdit1->setPalette(*readOnlyPalette);
+    ui->e1LineEdit2->setReadOnly(true);
+    ui->e1LineEdit2->setPalette(*readOnlyPalette);
+    ui->e1LineEdit3->setReadOnly(true);
+    ui->e1LineEdit3->setPalette(*readOnlyPalette);
+    ui->e2LineEdit1->setReadOnly(true);
+    ui->e2LineEdit1->setPalette(*readOnlyPalette);
+    ui->e2LineEdit2->setReadOnly(true);
+    ui->e2LineEdit2->setPalette(*readOnlyPalette);
+    ui->e2LineEdit3->setReadOnly(true);
+    ui->e2LineEdit3->setPalette(*readOnlyPalette);
+}
+
+void MainWindow::on_editPushButton_clicked()
+{
+    this->setToNormalPalette();
+    ui->savePushButton->setEnabled(true);
+}
+
+void MainWindow::on_savePushButton_clicked()
+{
+    QStringList modeList;
+    modeList.append("Set Potential");
+    modeList.append("LSV");
+    modeList.append("OCV");
+    modeList.append("LSCV");
+    //The following validation needs to be stronger.
+    //Check whether there is parameters;
+    //Check whether input parameters are valid;
+    if ( (this->e1Mode == 1 || this->e1Mode == 2 || this->e1Mode == 3 || this->e1Mode == 4)
+         && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3 || this->e2Mode == 4))
+    {
+        QString expString = constructExpString();
+        QString result = this->validator.validate(expString);
+
+        QStringList e1e2Results = result.split(";");
+        if(e1e2Results[0].startsWith("Y")&&e1e2Results[1].startsWith("Y"))
+        {
+            this->e1e2Experiments[currentEditting] = expString;
+            this->setToReadOnlyPalette();
+            ui->savePushButton->setEnabled(false);
+
+        }
+        else{
+            QString errorMessage = "Please refer to following errors:\n\n";
+            errorMessage.append("Electrode 1: \n\t");
+            errorMessage.append(e1e2Results[0]);
+            errorMessage.append("\n\n");
+            errorMessage.append("Electrode 2: \n\t");
+            errorMessage.append(e1e2Results[1]);
+            QMessageBox::warning(this, "Error", errorMessage
+                                            );
+        }
+        qDebug() << expString;
+        qDebug() << result;
+    }
 
 }

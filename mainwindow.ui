@@ -628,7 +628,7 @@ border: none;
              <string notr="true">
 
 QPushButton {
- background-color: #3D99B3;
+ background-color: #FFDE69;
 
  border-radius:25px;
 
@@ -639,7 +639,7 @@ QPushButton {
  }
 
  QPushButton:pressed {
-     background-color: #5277DE;
+     background-color: #FFDE69;
  }
 
 QPushButton:hover{
@@ -676,7 +676,7 @@ QPushButton:hover{
              <string notr="true">
 
 QPushButton {
- background-color: #CC6A29;
+ background-color: #E88D44;
 
  border-radius:25px;
 
@@ -687,7 +687,7 @@ QPushButton {
  }
 
  QPushButton:pressed {
-     background-color: #DB722C;
+     background-color: #E88D44;
  }
 
 QPushButton:hover{
@@ -724,7 +724,7 @@ QPushButton:hover{
              <string notr="true">
 
 QPushButton {
- background-color: #C73644;
+ background-color: #FF4945;
 
  border-radius:25px;
 
@@ -735,7 +735,7 @@ QPushButton {
  }
 
  QPushButton:pressed {
-     background-color: #DB3B4B;
+     background-color: #FF4945;
  }
 
 QPushButton:hover{
@@ -755,6 +755,102 @@ QPushButton:hover{
           </item>
           <item>
            <spacer name="horizontalSpacer_13">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="editPushButton">
+            <property name="styleSheet">
+             <string notr="true">
+
+QPushButton {
+ background-color: #CF68E8;
+
+ border-radius:25px;
+
+ max-width:50px;
+ max-height:50px;
+ min-width:50px;
+ min-height:50px;
+ }
+
+ QPushButton:pressed {
+     background-color: #CF68E8;
+ }
+
+QPushButton:hover{
+	border: 1px solid white;
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="Icons.qrc">
+              <normaloff>:/icons/icons/edit-50.png</normaloff>:/icons/icons/edit-50.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="savePushButton">
+            <property name="styleSheet">
+             <string notr="true">
+
+QPushButton {
+ background-color: #7E7CFF;
+
+ border-radius:25px;
+
+ max-width:50px;
+ max-height:50px;
+ min-width:50px;
+ min-height:50px;
+ }
+
+ QPushButton:pressed {
+     background-color: #7E7CFF;
+ }
+
+QPushButton:hover{
+	border: 1px solid white;
+}
+
+</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="Icons.qrc">
+              <normaloff>:/icons/icons/save-50.png</normaloff>:/icons/icons/save-50.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_15">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>

@@ -6,5 +6,7 @@
         <file>icons/stop.png</file>
         <file>icons/eraser-512.png</file>
         <file>icons/minus-512.png</file>
+        <file>icons/edit-50.png</file>
+        <file>icons/save-50.png</file>
     </qresource>
 </RCC>

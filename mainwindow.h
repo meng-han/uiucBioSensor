@@ -48,8 +48,9 @@ private slots:
     void enable_all_radioButtonE2();
     void on_e1NoneRadioButton_clicked();
     void on_e2NoneRadioButton_clicked();
-
     void on_tableWidget_cellDoubleClicked(int row, int column);
+    void on_editPushButton_clicked();
+    void on_savePushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -62,6 +63,11 @@ private:
     QStringList e1e2Experiments;  //Records all experiments in a list
     QString constructExpString();
     validateExp validator;
+    QPalette *readOnlyPalette = new QPalette();
+    QPalette *normalPalette = new QPalette();
+    void setToNormalPalette();
+    void setToReadOnlyPalette();
+    int currentEditting;
 
 };
 
