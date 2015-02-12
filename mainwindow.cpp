@@ -493,8 +493,11 @@ void MainWindow::on_deletePushButton_clicked()
     qDebug() << selectedFiles.size();
     if(selectedFiles.size()>0)
     {
+        //Remove table row at front-end
         int rowToDelete = selectedFiles[0]->row();
         ui->tableWidget->removeRow(rowToDelete);
+        //Remove corresponding items at back-end
+        this->e1e2Experiments.removeAt(rowToDelete);
     }
 
 }
