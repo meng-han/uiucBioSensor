@@ -107,6 +107,21 @@ void MainWindow::on_actionAbout_triggered()
 
 /************************************RADIO BUTTONS**********************************/
 
+void MainWindow::e1HideFourthRow()
+{
+    if (!ui->e1Label7->isHidden()) ui->e1Label7->hide();
+    if (!ui->e1Label8->isHidden()) ui->e1Label8->hide();
+    if (!ui->e1LineEdit4->isHidden()) ui->e1LineEdit4->hide();
+}
+
+void MainWindow::e2HideFourthRow()
+{
+    if (!ui->e2Label7->isHidden()) ui->e2Label7->hide();
+    if (!ui->e2Label8->isHidden()) ui->e2Label8->hide();
+    if (!ui->e2LineEdit4->isHidden()) ui->e2LineEdit4->hide();
+}
+
+
 /**
  * @brief MainWindow::on_e1SPRadioButton_clicked
  * SET POTENTIAL
@@ -135,6 +150,8 @@ void MainWindow::on_e1SPRadioButton_clicked()
 
     if (ui->e1LineEdit2->isHidden()) ui->e1LineEdit2->show();
     if (ui->e1LineEdit3->isHidden()) ui->e1LineEdit3->show();
+
+    this->e1HideFourthRow();
 
     ui->e1Label3->setText("Duration = ");
     ui->e1Label4->setText("min");
@@ -176,6 +193,8 @@ void MainWindow::on_e2SPRadioButton_clicked()
     if (ui->e2LineEdit2->isHidden()) ui->e2LineEdit2->show();
     if (ui->e2LineEdit3->isHidden()) ui->e2LineEdit3->show();
 
+    this->e2HideFourthRow();
+
     ui->e2Label3->setText("Duration = ");
     ui->e2Label4->setText("min");
 
@@ -215,12 +234,18 @@ void MainWindow::on_e1LSVRadioButton_clicked()
     ui->e1Label3->setText("Max Anode = ");
     ui->e1Label4->setText("V");
 
+    if (ui->e1Label5->isHidden()) ui->e1Label5->show();
+    if (ui->e1Label6->isHidden()) ui->e1Label6->show();
+    if (ui->e1LineEdit3->isHidden()) ui->e1LineEdit3->show();
+
+    ui->e1Label5->setText("Min Anode = ");
+    ui->e1Label6->setText("V");
+
     ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
     ui->e1LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
+    ui->e1LineEdit3->setValidator(new QDoubleValidator(-100, 0, 5, this));
 
-    ui->e1Label5->hide();
-    ui->e1Label6->hide();
-    ui->e1LineEdit3->hide();
+    this->e1HideFourthRow();
 }
 
 
@@ -253,12 +278,17 @@ void MainWindow::on_e2LSVRadioButton_clicked()
     ui->e2Label3->setText("Max Anode = ");
     ui->e2Label4->setText("V");
 
+    if (ui->e2Label5->isHidden()) ui->e2Label5->show();
+    if (ui->e2Label6->isHidden()) ui->e2Label6->show();
+    if (ui->e2LineEdit3->isHidden()) ui->e2LineEdit3->show();
+
+    ui->e2Label5->setText("Min Anode = ");
+    ui->e2Label6->setText("V");
+
     ui->e2LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
     ui->e2LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
 
-    ui->e2Label5->hide();
-    ui->e2Label6->hide();
-    ui->e2LineEdit3->hide();
+    this->e2HideFourthRow();
 }
 
 
@@ -292,6 +322,8 @@ void MainWindow::on_e1OCVRadioButton_clicked()
     ui->e1Label5->hide();
     ui->e1Label6->hide();
     ui->e1LineEdit3->hide();
+
+    this->e1HideFourthRow();
 
 }
 
@@ -327,6 +359,8 @@ void MainWindow::on_e2OCVRadioButton_clicked()
     ui->e2Label6->hide();
     ui->e2LineEdit3->hide();
 
+    this->e2HideFourthRow();
+
 }
 
 /**
@@ -352,17 +386,21 @@ void MainWindow::on_e1LSCVRadioButton_clicked()
     ui->e1Label2->setText("mV/s");
     ui->e1Label3->setText("Max Anode = ");
     ui->e1Label4->setText("V");
-    ui->e1Label5->setText("# of Cycles");
+    ui->e1Label5->setText("# of Cycles = ");
     ui->e1Label6->hide();
     if (ui->e1Label3->isHidden()) ui->e1Label3->show();
     if (ui->e1Label4->isHidden()) ui->e1Label4->show();
     if (ui->e1LineEdit2->isHidden()) ui->e1LineEdit2->show();
     if (ui->e1Label5->isHidden()) ui->e1Label5->show();
     if (ui->e1LineEdit3->isHidden()) ui->e1LineEdit3->show();
+    if (ui->e1Label7->isHidden()) ui->e1Label7->show();
+    if (ui->e1Label8->isHidden()) ui->e1Label8->show();
+    if (ui->e1LineEdit4->isHidden()) ui->e1LineEdit4->show();
 
     ui->e1LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
     ui->e1LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
     ui->e1LineEdit3->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e1LineEdit4->setValidator(new QDoubleValidator(-100, 0, 5, this));
 }
 
 /**
@@ -397,10 +435,14 @@ void MainWindow::on_e2LSCVRadioButton_clicked()
     if (ui->e2LineEdit2->isHidden()) ui->e2LineEdit2->show();
     if (ui->e2Label5->isHidden()) ui->e2Label5->show();
     if (ui->e2LineEdit3->isHidden()) ui->e2LineEdit3->show();
+    if (ui->e2Label7->isHidden()) ui->e2Label7->show();
+    if (ui->e2Label8->isHidden()) ui->e2Label8->show();
+    if (ui->e2LineEdit4->isHidden()) ui->e2LineEdit4->show();
 
     ui->e2LineEdit1->setValidator(new QIntValidator(0, 9999999, this));
     ui->e2LineEdit2->setValidator(new QDoubleValidator(-100, 0, 5, this));
     ui->e2LineEdit3->setValidator(new QIntValidator(0, 9999999, this));
+    ui->e2LineEdit4->setValidator(new QDoubleValidator(-100, 0, 5, this));
 }
 
 void MainWindow::enable_all_radioButtonE1()
@@ -455,6 +497,8 @@ QString MainWindow::constructExpString()
     tempExp.append(",");
     tempExp.append(ui->e1LineEdit3->text());
     tempExp.append(",");
+    tempExp.append(ui->e1LineEdit4->text());
+    tempExp.append(",");
 
     tempExp.append(QString::number(this->e2Mode));
     tempExp.append(",");
@@ -463,6 +507,9 @@ QString MainWindow::constructExpString()
     tempExp.append(ui->e2LineEdit2->text());
     tempExp.append(",");
     tempExp.append(ui->e2LineEdit3->text());
+    tempExp.append(",");
+    tempExp.append(ui->e2LineEdit4->text());
+
     return tempExp;
 }
 
@@ -558,12 +605,18 @@ void MainWindow::setToNormalPalette(){
     ui->e1LineEdit2->setPalette(*normalPalette);
     ui->e1LineEdit3->setReadOnly(false);
     ui->e1LineEdit3->setPalette(*normalPalette);
+    ui->e1LineEdit4->setReadOnly(false);
+    ui->e1LineEdit4->setPalette(*normalPalette);
+
+
     ui->e2LineEdit1->setReadOnly(false);
     ui->e2LineEdit1->setPalette(*normalPalette);
     ui->e2LineEdit2->setReadOnly(false);
     ui->e2LineEdit2->setPalette(*normalPalette);
     ui->e2LineEdit3->setReadOnly(false);
     ui->e2LineEdit3->setPalette(*normalPalette);
+    ui->e2LineEdit4->setReadOnly(false);
+    ui->e2LineEdit4->setPalette(*normalPalette);
 }
 
 
@@ -585,7 +638,7 @@ void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
     case 4:this->on_e1LSCVRadioButton_clicked();break;
     default:break;
     }
-    switch(inputData[4].toInt())
+    switch(inputData[5].toInt())
     {
     case 1:this->on_e2SPRadioButton_clicked();break;
     case 2:this->on_e2LSVRadioButton_clicked();break;
@@ -596,13 +649,15 @@ void MainWindow::on_tableWidget_cellDoubleClicked(int row, int column)
     ui->e1LineEdit1->setText(inputData[1]);
     ui->e1LineEdit2->setText(inputData[2]);
     ui->e1LineEdit3->setText(inputData[3]);
-    ui->e2LineEdit1->setText(inputData[5]);
-    ui->e2LineEdit2->setText(inputData[6]);
-    ui->e2LineEdit3->setText(inputData[7]);
+    ui->e1LineEdit4->setText(inputData[4]);
+    ui->e2LineEdit1->setText(inputData[6]);
+    ui->e2LineEdit2->setText(inputData[7]);
+    ui->e2LineEdit3->setText(inputData[8]);
+    ui->e2LineEdit4->setText(inputData[9]);
     this->setToReadOnlyPalette();
     ui->editPushButton->setEnabled(true);
 
-    qDebug() << this->e1e2Experiments.size();
+    qDebug() << "EXP size" << this->e1e2Experiments.size();
 }
 
 void MainWindow::setToReadOnlyPalette()
@@ -613,12 +668,17 @@ void MainWindow::setToReadOnlyPalette()
     ui->e1LineEdit2->setPalette(*readOnlyPalette);
     ui->e1LineEdit3->setReadOnly(true);
     ui->e1LineEdit3->setPalette(*readOnlyPalette);
+    ui->e1LineEdit4->setReadOnly(true);
+    ui->e1LineEdit4->setPalette(*readOnlyPalette);
+
     ui->e2LineEdit1->setReadOnly(true);
     ui->e2LineEdit1->setPalette(*readOnlyPalette);
     ui->e2LineEdit2->setReadOnly(true);
     ui->e2LineEdit2->setPalette(*readOnlyPalette);
     ui->e2LineEdit3->setReadOnly(true);
     ui->e2LineEdit3->setPalette(*readOnlyPalette);
+    ui->e2LineEdit4->setReadOnly(true);
+    ui->e2LineEdit4->setPalette(*readOnlyPalette);
 }
 
 void MainWindow::on_editPushButton_clicked()
@@ -634,8 +694,7 @@ void MainWindow::on_savePushButton_clicked()
     modeList.append("LSV");
     modeList.append("OCV");
     modeList.append("LSCV");
-    //The following validation needs to be stronger.
-    //Check whether there is parameters;
+    //Check whether there are parameters;
     //Check whether input parameters are valid;
     if ( (this->e1Mode == 1 || this->e1Mode == 2 || this->e1Mode == 3 || this->e1Mode == 4)
          && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3 || this->e2Mode == 4))

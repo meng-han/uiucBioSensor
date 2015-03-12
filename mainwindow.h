@@ -51,6 +51,9 @@ private slots:
     void on_tableWidget_cellDoubleClicked(int row, int column);
     void on_editPushButton_clicked();
     void on_savePushButton_clicked();
+    void e1HideFourthRow();
+    void e2HideFourthRow();
+
 
 private:
     Ui::MainWindow *ui;

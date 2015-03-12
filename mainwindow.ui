@@ -376,20 +376,10 @@ border: none;
                <layout class="QVBoxLayout" name="verticalLayout_4">
                 <item>
                  <layout class="QGridLayout" name="gridLayout">
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="e1Label1">
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="e1Label3">
                     <property name="text">
-                     <string>Anode Potential = </string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QLineEdit" name="e1LineEdit1">
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <string>Duration = </string>
                     </property>
                    </widget>
                   </item>
@@ -397,13 +387,6 @@ border: none;
                    <widget class="QLineEdit" name="e1LineEdit2">
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="e1Label3">
-                    <property name="text">
-                     <string>Duration = </string>
                     </property>
                    </widget>
                   </item>
@@ -421,13 +404,6 @@ border: none;
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="e1Label5">
-                    <property name="text">
-                     <string># of Cycles</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="2" column="1">
                    <widget class="QLineEdit" name="e1LineEdit3">
                     <property name="alignment">
@@ -435,10 +411,55 @@ border: none;
                     </property>
                    </widget>
                   </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="e1Label5">
+                    <property name="text">
+                     <string># of Cycles =</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="2" column="2">
                    <widget class="QLabel" name="e1Label6">
                     <property name="text">
                      <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="e1Label1">
+                    <property name="text">
+                     <string>Anode Potential = </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="e1LineEdit1">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="e1Label7">
+                    <property name="text">
+                     <string>Min Anode =</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QLabel" name="e1Label8">
+                    <property name="text">
+                     <string>V</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="e1LineEdit4">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                    </widget>
                   </item>
@@ -534,17 +555,17 @@ border: none;
                <layout class="QVBoxLayout" name="verticalLayout_9">
                 <item>
                  <layout class="QGridLayout" name="gridLayout_2">
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="e2Label1">
-                    <property name="text">
-                     <string>Anode Potential = </string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="1" column="0">
                    <widget class="QLabel" name="e2Label3">
                     <property name="text">
                      <string>Duration = </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="e2Label1">
+                    <property name="text">
+                     <string>Anode Potential = </string>
                     </property>
                    </widget>
                   </item>
@@ -569,17 +590,10 @@ border: none;
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="2">
-                   <widget class="QLabel" name="e2Label4">
-                    <property name="text">
-                     <string>min</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="2" column="0">
                    <widget class="QLabel" name="e2Label5">
                     <property name="text">
-                     <string># of Cycles</string>
+                     <string># of Cycles = </string>
                     </property>
                    </widget>
                   </item>
@@ -590,10 +604,38 @@ border: none;
                     </property>
                    </widget>
                   </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="e2Label4">
+                    <property name="text">
+                     <string>min</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="2" column="2">
                    <widget class="QLabel" name="e2Label6">
                     <property name="text">
                      <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="e2LineEdit4">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="e2Label7">
+                    <property name="text">
+                     <string>Min Anode = </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QLabel" name="e2Label8">
+                    <property name="text">
+                     <string>V</string>
                     </property>
                    </widget>
                   </item>
