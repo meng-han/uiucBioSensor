@@ -12,7 +12,7 @@
 
 #include "settingsdialog.h"
 #include "aboutdialog.h"
-
+#include "constraintsdialog.h"
 #include "validateexp.h"
 
 namespace Ui {
@@ -55,6 +55,8 @@ private slots:
     void e2HideFourthRow();
 
 
+    void on_actionConstraints_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSerialPort *port;
@@ -71,6 +73,8 @@ private:
     void setToNormalPalette();
     void setToReadOnlyPalette();
     int currentEditting;
+
+    constraintsDialog *cd;
 
 };
 

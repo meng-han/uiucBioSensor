@@ -16,16 +16,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     settingsdialog.cpp \
     aboutdialog.cpp \
-    validateexp.cpp
+    validateexp.cpp \
+    constraintsdialog.cpp
 
 HEADERS  += mainwindow.h \
     settingsdialog.h \
     aboutdialog.h \
-    validateexp.h
+    validateexp.h \
+    constraintsdialog.h
 
 FORMS    += mainwindow.ui \
     settingsdialog.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    constraintsdialog.ui
 
 RESOURCES += \
     Icons.qrc

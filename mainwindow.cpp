@@ -26,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->editPushButton->setEnabled(false);
     ui->savePushButton->setEnabled(false);
+
+    this->cd = new constraintsDialog(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -527,7 +530,10 @@ void MainWindow::on_addToButton_clicked()
          && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3 || this->e2Mode == 4))
     {
         QString expString = constructExpString();
-        QString result = this->validator.validate(expString);
+        QList<double> constraints = QList<double>() << this->cd->spCon1 << this->cd->spCon2 << this->cd->spCon3 << this->cd->lsvCon1 << this->cd->lsvCon2 << this->cd->lsvCon3 <<
+                      this->cd->lscvCon1 << this->cd->lscvCon2 << this->cd->lscvCon3 << this->cd->lscvCon4 << this->cd->ocvCon1 << this->cd->ocvCon2;
+
+        QString result = this->validator.validate(expString, constraints);
 
         QStringList e1e2Results = result.split(";");
         if(e1e2Results[0].startsWith("Y")&&e1e2Results[1].startsWith("Y"))
@@ -700,7 +706,9 @@ void MainWindow::on_savePushButton_clicked()
          && (this->e2Mode == 1 || this->e2Mode == 2 || this->e2Mode == 3 || this->e2Mode == 4))
     {
         QString expString = constructExpString();
-        QString result = this->validator.validate(expString);
+        QList<double> constraints = QList<double>() << this->cd->spCon1 << this->cd->spCon2 << this->cd->spCon3 << this->cd->lsvCon1 << this->cd->lsvCon2 << this->cd->lsvCon3 <<
+                      this->cd->lscvCon1 << this->cd->lscvCon2 << this->cd->lscvCon3 << this->cd->lscvCon4 << this->cd->ocvCon1 << this->cd->ocvCon2;
+        QString result = this->validator.validate(expString,constraints);
 
         QStringList e1e2Results = result.split(";");
         if(e1e2Results[0].startsWith("Y")&&e1e2Results[1].startsWith("Y"))
@@ -724,4 +732,9 @@ void MainWindow::on_savePushButton_clicked()
         qDebug() << result;
     }
 
+}
+
+void MainWindow::on_actionConstraints_triggered()
+{
+    this->cd->exec();
 }

@@ -1185,6 +1185,7 @@ border-left: 1px solid black;
      <string>Settings</string>
     </property>
     <addaction name="actionConfigure"/>
+    <addaction name="actionConstraints"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1230,6 +1231,11 @@ border-left: 1px solid black;
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionConstraints">
+   <property name="text">
+    <string>Constraints</string>
    </property>
   </action>
  </widget>
