@@ -26,15 +26,17 @@ public:
     double lscvCon4;
     int ocvCon1;
     int ocvCon2;
+    void loadAllConstraints();
+
 
 private slots:
     void on_buttonBox_accepted();
     void assignAllConstraints();
     void setConstraintsLineEdits();
-    void loadAllConstraints();
 
 private:
     Ui::constraintsDialog *ui;
+
     bool firstTime = true;
 
 };

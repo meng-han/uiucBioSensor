@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->savePushButton->setEnabled(false);
 
     this->cd = new constraintsDialog(this);
+    this->loadLastConstraints();
 
 }
 
@@ -737,4 +738,98 @@ void MainWindow::on_savePushButton_clicked()
 void MainWindow::on_actionConstraints_triggered()
 {
     this->cd->exec();
+}
+
+void MainWindow::on_actionSave_Constraints_As_triggered()
+{
+    QString currentPath = QCoreApplication::applicationFilePath();
+    QString settingFilePath = QFileDialog::getSaveFileName(this,
+                     tr("Save Constraints File As"), currentPath, tr("TXT Files (*.txt)"));
+
+
+    QFile file( settingFilePath );
+    if ( file.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream( &file );
+        stream << this->cd->spCon1 << "," << this->cd->spCon2 << "," << this->cd->spCon3 << "," << this->cd->lsvCon1 << "," <<
+                  this->cd->lsvCon2 << "," << this->cd->lsvCon3 << "," << this->cd->lscvCon1 << "," << this->cd->lscvCon2 <<
+                  "," << this->cd->lscvCon3 << "," << this->cd->lscvCon4 << "," << this->cd->ocvCon1 << "," << this->cd->ocvCon2;
+    }
+    file.close();
+}
+
+void MainWindow::on_actionLoad_Constraints_triggered()
+{
+    QString currentPath = QCoreApplication::applicationFilePath();
+    QString settingFilePath = QFileDialog::getOpenFileName(this,
+                                                           tr("Open Constraints File"), currentPath, tr("TXT files (*.txt)"));
+    QFile file(settingFilePath);
+    if(file.open(QIODevice::ReadWrite))
+    {
+        QTextStream stream(&file);
+        QString readConstraints = stream.readLine();
+        QStringList constraints = readConstraints.split(",");
+        if(constraints.size() != 12){
+            QMessageBox::information(this,"Error","Please load valid constraints files.");
+        } else {
+            this->cd->spCon1 = constraints.at(0).toDouble();
+            this->cd->spCon2 = constraints.at(1).toInt();
+            this->cd->spCon3 = constraints.at(2).toInt();
+            this->cd->lsvCon1 = constraints.at(3).toInt();
+            this->cd->lsvCon2 = constraints.at(4).toDouble();
+            this->cd->lsvCon3 = constraints.at(5).toDouble();
+            this->cd->lscvCon1 = constraints.at(6).toInt();
+            this->cd->lscvCon2 = constraints.at(7).toDouble();
+            this->cd->lscvCon3 = constraints.at(8).toInt();
+            this->cd->lscvCon4 = constraints.at(9).toDouble();
+            this->cd->ocvCon1 = constraints.at(10).toInt();
+            this->cd->ocvCon2 = constraints.at(11).toInt();
+            this->cd->loadAllConstraints();
+
+
+            QFile last(QCoreApplication::applicationDirPath() + "/lastLoadedConstraints.txt");
+            last.open(QIODevice::ReadWrite);
+            QTextStream sstream(&last);
+            sstream << settingFilePath;
+            last.close();
+        }
+    }
+    file.close();
+}
+
+void MainWindow::loadLastConstraints()
+{
+    QString dirPath = QCoreApplication::applicationDirPath();
+    QFile file(dirPath + "/lastLoadedConstraints.txt");
+    file.open(QIODevice::ReadOnly);
+    QTextStream sstream(&file);
+    QString lastLoadedTxt = sstream.readLine();
+    file.close();
+
+    if(lastLoadedTxt.split("/").size()==1) lastLoadedTxt = dirPath + "/" + lastLoadedTxt;
+    QFile txt(lastLoadedTxt);
+    if(txt.open(QIODevice::ReadWrite)){
+        QTextStream stream(&txt);
+        QString readConstraints = stream.readLine();
+        QStringList constraints = readConstraints.split(",");
+        qDebug() << readConstraints << " " << constraints.size();
+        if(constraints.size() != 12){
+            QMessageBox::information(this,"Error","Please load valid constraints files.");
+        } else {
+            this->cd->spCon1 = constraints.at(0).toDouble();
+            this->cd->spCon2 = constraints.at(1).toInt();
+            this->cd->spCon3 = constraints.at(2).toInt();
+            this->cd->lsvCon1 = constraints.at(3).toInt();
+            this->cd->lsvCon2 = constraints.at(4).toDouble();
+            this->cd->lsvCon3 = constraints.at(5).toDouble();
+            this->cd->lscvCon1 = constraints.at(6).toInt();
+            this->cd->lscvCon2 = constraints.at(7).toDouble();
+            this->cd->lscvCon3 = constraints.at(8).toInt();
+            this->cd->lscvCon4 = constraints.at(9).toDouble();
+            this->cd->ocvCon1 = constraints.at(10).toInt();
+            this->cd->ocvCon2 = constraints.at(11).toInt();
+            this->cd->loadAllConstraints();
+        }
+    }
+    txt.close();
 }

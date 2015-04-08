@@ -9,8 +9,8 @@ constraintsDialog::constraintsDialog(QWidget *parent) :
     if(firstTime)
         this->assignAllConstraints();
 
-    else
-        this->loadAllConstraints();
+
+    this->loadAllConstraints();
 
     this->setConstraintsLineEdits();
 

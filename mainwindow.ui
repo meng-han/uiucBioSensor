@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1381</width>
-    <height>792</height>
+    <height>817</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1185,7 +1185,10 @@ border-left: 1px solid black;
      <string>Settings</string>
     </property>
     <addaction name="actionConfigure"/>
+    <addaction name="separator"/>
     <addaction name="actionConstraints"/>
+    <addaction name="actionSave_Constraints_As"/>
+    <addaction name="actionLoad_Constraints"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -1236,6 +1239,16 @@ border-left: 1px solid black;
   <action name="actionConstraints">
    <property name="text">
     <string>Constraints</string>
+   </property>
+  </action>
+  <action name="actionSave_Constraints_As">
+   <property name="text">
+    <string>Save Constraints As ...</string>
+   </property>
+  </action>
+  <action name="actionLoad_Constraints">
+   <property name="text">
+    <string>Load Constraints ...</string>
    </property>
   </action>
  </widget>

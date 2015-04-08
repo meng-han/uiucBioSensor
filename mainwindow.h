@@ -9,6 +9,7 @@
 #include <QtCore/QDebug>
 #include <QDialog>
 #include <QMessageBox>
+#include <QFileDialog>
 
 #include "settingsdialog.h"
 #include "aboutdialog.h"
@@ -57,6 +58,11 @@ private slots:
 
     void on_actionConstraints_triggered();
 
+    void on_actionSave_Constraints_As_triggered();
+
+    void on_actionLoad_Constraints_triggered();
+    void loadLastConstraints();
+
 private:
     Ui::MainWindow *ui;
     QSerialPort *port;
@@ -75,6 +81,7 @@ private:
     int currentEditting;
 
     constraintsDialog *cd;
+    QString lastLoadedTxt;
 
 };
 
